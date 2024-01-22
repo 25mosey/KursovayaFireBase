@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "943327856831",
+    "project_id": "zhkhkursovaya",
+    "storage_bucket": "zhkhkursovaya.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943327856831:android:756db0253369f91f391e0a",
+        "android_client_info": {
+          "package_name": "com.example.kursovayafirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB792dCmyunTZXrsROlNf5YEj-meqlK5kc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

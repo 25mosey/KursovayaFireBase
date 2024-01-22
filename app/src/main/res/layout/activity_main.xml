@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/bottomButtonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="360dp"
+        android:layout_height="356dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="305dp"
+        android:padding="16dp"
+        android:scrollbars="vertical" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="125dp"
+        android:layout_height="105dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="254dp"
+        android:layout_marginBottom="707dp"
+        android:text="Выйти" />
+
+    <Button
+        android:id="@+id/supportBTN"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="581dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="150dp"
+        android:text="Support" />
+
+    <Button
+        android:id="@+id/callListBTN"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="652dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="74dp"
+        android:text="Call list" />
+
+    <Button
+        android:id="@+id/randomCallBTN"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="728dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="-2dp"
+        android:text="Random" />
+
+</RelativeLayout>
