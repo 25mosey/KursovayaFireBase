@@ -34,6 +34,17 @@ class AuthActivity : AppCompatActivity() {
         val rememberMe = sharedPreferences.getBoolean("rememberMe", false)
         rememberMeCheckbox.isChecked = rememberMe
 
+        // Если флажок "Запомнить меня" установлен и есть сохраненные email и password, выполнить автоматический вход
+        if (rememberMe) {
+            val savedEmail = sharedPreferences.getString("email", "")
+            val savedPassword = sharedPreferences.getString("password", "")
+
+            if (!savedEmail.isNullOrEmpty() && !savedPassword.isNullOrEmpty()) {
+                emailEditText.setText(savedEmail)
+                passwordEditText.setText(savedPassword)
+            }
+        }
+
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
@@ -41,10 +52,23 @@ class AuthActivity : AppCompatActivity() {
             // Сохранение состояния "запомнить меня"
             val editor = sharedPreferences.edit()
             editor.putBoolean("rememberMe", rememberMeCheckbox.isChecked)
-            editor.apply()
 
-            loginUser(email, password)
+            // Если флажок "Запомнить меня" установлен и введены непустые email и password, выполнить вход
+            if (rememberMeCheckbox.isChecked && email.isNotEmpty() && password.isNotEmpty()) {
+                editor.putString("email", email)
+                editor.putString("password", password)
+                loginUser(email, password)
+            } else {
+                // Если флажок не установлен или email/password пустые, очистить сохраненные email и password
+                editor.remove("email")
+                editor.remove("password")
+            }
+
+            editor.apply()
         }
+
+
+
     }
 
     private fun loginUser(email: String, password: String) {
@@ -62,5 +86,20 @@ class AuthActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+    }
+    // Добавлен метод для выхода из аккаунта и очистки сохраненных данных
+    private fun logoutUser() {
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.remove("email")
+        editor.remove("password")
+        editor.apply()
+
+        mAuth.signOut()
+
+        // Переход на экран входа
+        val intent = Intent(this, AuthActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
