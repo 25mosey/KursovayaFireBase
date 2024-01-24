@@ -2,7 +2,9 @@ package com.example.kursovayafirebase
 
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class RandomCallActivity : AppCompatActivity() {
@@ -11,19 +13,11 @@ class RandomCallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_random)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val btnBack: Button = findViewById(R.id.btnBack)
 
-    }
-
-    // Обработка нажатия кнопки "назад"
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                finish()
-                Log.d("RandomCallActivity", "Navigating back to MainActivity")
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
+        btnBack.setOnClickListener(View.OnClickListener {
+            finish()
+            Log.d("RandomCallActivity", "Navigating back to MainActivity")
+        })
     }
 }
