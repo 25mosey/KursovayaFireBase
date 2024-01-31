@@ -96,7 +96,6 @@ class AuthActivity : AppCompatActivity() {
 
         mAuth.signOut()
 
-        // Переход на экран входа
         val intent = Intent(this, AuthActivity::class.java)
         startActivity(intent)
         finish()
