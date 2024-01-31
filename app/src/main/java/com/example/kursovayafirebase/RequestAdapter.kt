@@ -9,32 +9,37 @@ import androidx.recyclerview.widget.RecyclerView
 class RequestAdapter(private val requests: List<Request>) :
     RecyclerView.Adapter<RequestAdapter.ViewHolder>()  {
 
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textViewID: TextView = itemView.findViewById(R.id.textViewId)
+        val textViewNameLiver: TextView = itemView.findViewById(R.id.textViewName)
+        val textViewIssue: TextView = itemView.findViewById(R.id.textViewProblem)
+        val textViewAddres: TextView = itemView.findViewById(R.id.textViewAddress)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_request, parent, false)
-        return ViewHolder(view)
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_request, parent, false)
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val request = requests[position]
-        holder.bind(request)
+        holder.textViewID.text = request.id
+        holder.textViewNameLiver.text = request.nameLiver
+        holder.textViewIssue.text = request.issue
+        holder.textViewAddres.text = request.address
     }
 
     override fun getItemCount(): Int {
-        return requests.size
+       return requests.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val textViewID: TextView = itemView.findViewById(R.id.textViewId)
-        private val textViewNameLiver: TextView = itemView.findViewById(R.id.textViewName)
-        private val textViewIssue: TextView = itemView.findViewById(R.id.textViewProblem)
-        private val textViewAddres: TextView = itemView.findViewById(R.id.textViewAddress)
 
-        fun bind(request: Request) {
-            textViewID.text = "ID: ${request.id}"
-            textViewNameLiver.text = "NameLiver: ${request.nameLiver}"
-            textViewIssue.text = "Issue: ${request.issue}"
-            textViewAddres.text = "Addres: ${request.address}"
-        }
-    }
 }
 
+//        fun bind(request: Request) {
+//            textViewID.text = "ID: ${request.id}"
+//            textViewNameLiver.text = "NameLiver: ${request.nameLiver}"
+//            textViewIssue.text = "Issue: ${request.issue}"
+//            textViewAddres.text = "Addres: ${request.address}"
+//        }

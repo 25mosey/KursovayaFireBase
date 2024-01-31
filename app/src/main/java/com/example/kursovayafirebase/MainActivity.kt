@@ -3,6 +3,7 @@ package com.example.kursovayafirebase
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Adapter
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,45 +18,41 @@ import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var reqList: MutableList<Request> = mutableListOf()
     private lateinit var recyclerView: RecyclerView
     private lateinit var logoutButton: Button
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var requestsRef: DatabaseReference
     private lateinit var adapter: RequestAdapter
-    private lateinit var button1: Button
-    private lateinit var button2: Button
-    private lateinit var button3: Button
+    private lateinit var rndBtn: Button
+    private lateinit var callBtn: Button
+    private lateinit var supBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mAuth = FirebaseAuth.getInstance()
-        requestsRef = FirebaseDatabase.getInstance().getReference("Request")
-
         recyclerView = findViewById(R.id.recyclerView)
         logoutButton = findViewById(R.id.buttonLogout)
-        button1 = findViewById(R.id.randomCallBTN)
-        button2 = findViewById(R.id.callListBTN)
-        button3 = findViewById(R.id.supportBTN)
-
-        adapter = RequestAdapter(emptyList())
+        rndBtn = findViewById(R.id.randomCallBTN)
+        callBtn = findViewById(R.id.callListBTN)
+        supBtn = findViewById(R.id.supportBTN)
+        adapter = RequestAdapter(reqList)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+        mAuth = FirebaseAuth.getInstance()
 
-        addFirebaseListener()
 
-        button1.setOnClickListener {
+        rndBtn.setOnClickListener {
             val intent = Intent(this, RandomCallActivity::class.java)
             startActivity(intent)
         }
 
-        button2.setOnClickListener {
-            Toast.makeText(this, "Button 2 Clicked", Toast.LENGTH_SHORT).show()
+        callBtn.setOnClickListener {
+            Toast.makeText(this, "callBtn Clicked", Toast.LENGTH_SHORT).show()
         }
 
-        button3.setOnClickListener {
-            Toast.makeText(this, "Button 3 Clicked", Toast.LENGTH_SHORT).show()
+        supBtn.setOnClickListener {
+            Toast.makeText(this, "supBtn Clicked", Toast.LENGTH_SHORT).show()
         }
 
         logoutButton.setOnClickListener {
@@ -64,23 +61,19 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-    }
 
-    private fun addFirebaseListener() {
+        val requestsRef = FirebaseDatabase.getInstance().getReference("Applications")
         requestsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val requestList = mutableListOf<Request>()
-
                 for (snapshot in dataSnapshot.children) {
                     val id = snapshot.child("ID").value.toString()
                     val nameLiver = snapshot.child("NameLiver").value.toString()
                     val issue = snapshot.child("Issue").value.toString()
                     val address = snapshot.child("Addres").value.toString()
-
                     val request = Request(id, nameLiver, issue, address)
                     requestList.add(request)
                 }
-
 
                 requestList.forEach {
                     Log.d("Firebase", "Request: $it")
@@ -91,7 +84,12 @@ class MainActivity : AppCompatActivity() {
                 Log.e("Firebase", "Error reading data from Firebase", databaseError.toException())
             }
         })
+
     }
+
+
+
+
 
 }
 //https://www.amazon.com/dp/B08L7YXQ43/ref=cm_sw_r_as_gl_api_glt_i_QC0QZG5GYGEMD6TYPVAS?linkCode=ml1&tag=tangerine06-20&th=1

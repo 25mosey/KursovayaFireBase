@@ -43,6 +43,7 @@ class AuthActivity : AppCompatActivity() {
                 emailEditText.setText(savedEmail)
                 passwordEditText.setText(savedPassword)
             }
+
         }
 
         loginButton.setOnClickListener {
@@ -59,9 +60,7 @@ class AuthActivity : AppCompatActivity() {
                 editor.putString("password", password)
                 loginUser(email, password)
             } else {
-                // Если флажок не установлен или email/password пустые, очистить сохраненные email и password
-                editor.remove("email")
-                editor.remove("password")
+               loginUser(email, password)
             }
 
             editor.apply()
