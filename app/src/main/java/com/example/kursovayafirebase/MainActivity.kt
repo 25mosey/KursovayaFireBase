@@ -15,6 +15,8 @@ import com.example.kursovayafirebase.Request
 import com.example.kursovayafirebase.RequestAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,9 +38,9 @@ class MainActivity : AppCompatActivity() {
         rndBtn = findViewById(R.id.randomCallBTN)
         callBtn = findViewById(R.id.callListBTN)
         supBtn = findViewById(R.id.supportBTN)
-        adapter = RequestAdapter(reqList)
+
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+
         mAuth = FirebaseAuth.getInstance()
 
 
@@ -62,34 +64,26 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        val requestsRef = FirebaseDatabase.getInstance().getReference("Requests")
+      //  val requestsRef = FirebaseDatabase.getInstance().getReference("Requests")
+        val requestsRef=Firebase.database.getReference("Requests")
         requestsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val requestList = mutableListOf<Request>()
                 for (snapshot in dataSnapshot.children) {
                     val id = snapshot.child("ID").value.toString()
                     val nameLiver = snapshot.child("NameLiver").value.toString()
                     val issue = snapshot.child("Issue").value.toString()
                     val address = snapshot.child("Addres").value.toString()
                     val request = Request(id, nameLiver, issue, address)
-                    requestList.add(request)
+                    reqList.add(request)
                 }
-
-                requestList.forEach {
-                    Log.d("Firebase", "Request: $it")
-                }
+                adapter = RequestAdapter(reqList)
+                recyclerView.adapter = adapter
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.e("Firebase", "Error reading data from Firebase", databaseError.toException())
             }
         })
-
     }
-
-
-
-
-
 }
 //https://www.amazon.com/dp/B08L7YXQ43/ref=cm_sw_r_as_gl_api_glt_i_QC0QZG5GYGEMD6TYPVAS?linkCode=ml1&tag=tangerine06-20&th=1
