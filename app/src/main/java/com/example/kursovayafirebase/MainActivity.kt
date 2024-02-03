@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        val requestsRef = FirebaseDatabase.getInstance().getReference("Applications")
+        val requestsRef = FirebaseDatabase.getInstance().getReference("Requests")
         requestsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val requestList = mutableListOf<Request>()
