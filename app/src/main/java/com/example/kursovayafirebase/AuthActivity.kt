@@ -65,9 +65,6 @@ class AuthActivity : AppCompatActivity() {
 
             editor.apply()
         }
-
-
-
     }
 
     private fun loginUser(email: String, password: String) {
