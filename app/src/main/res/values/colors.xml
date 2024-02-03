@@ -2,5 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="purple">#8b00ff</color>
+    <color name="SemiPurple">#6750a4</color>
+    <color name="DarkPurple">#1D1A39</color>
+    <color name="Purple">#451952</color>
+    <color name="DarkRed">#662549</color>
+    <color name="LightRed">#AE445A</color>
+    <color name="Koral">#F39F5A</color>
+    <color name="Beige">#E8BCB9</color>
 </resources>
