@@ -54,7 +54,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         supBtn.setOnClickListener {
-            Toast.makeText(this, "supBtn Clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, SupportActivity::class.java)
+            startActivity(intent)
         }
 
         logoutButton.setOnClickListener {
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-      //  val requestsRef = FirebaseDatabase.getInstance().getReference("Requests")
+      //val requestsRef = FirebaseDatabase.getInstance().getReference("Requests")
         val requestsRef=Firebase.database.getReference("Requests")
         requestsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
