@@ -31,15 +31,6 @@ class RequestAdapter(private val requests: List<Request>) :
     }
 
     override fun getItemCount(): Int {
-       return requests.size
+        return requests.size
     }
-
-
 }
-
-//        fun bind(request: Request) {
-//            textViewID.text = "ID: ${request.id}"
-//            textViewNameLiver.text = "NameLiver: ${request.nameLiver}"
-//            textViewIssue.text = "Issue: ${request.issue}"
-//            textViewAddres.text = "Addres: ${request.address}"
-//        }
