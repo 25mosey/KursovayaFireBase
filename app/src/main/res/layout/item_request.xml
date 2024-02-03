@@ -4,19 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
 
     <LinearLayout
         android:id="@+id/LinearLayout"
-        android:layout_width="322dp"
-        android:layout_height="147dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/purple"
+        android:layout_width="361dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/SemiPurple"
+        android:clickable="true"
+        android:focusable="true"
         android:orientation="vertical"
         android:padding="20dp"
+        app:cardCornerRadius="16dp"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,29 +30,31 @@
             android:id="@+id/textViewId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textViewAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textViewProblem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:textSize="16sp" />
 
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
