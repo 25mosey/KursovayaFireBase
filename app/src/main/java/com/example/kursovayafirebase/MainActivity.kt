@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Adapter
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +29,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var rndBtn: Button
     private lateinit var callBtn: Button
     private lateinit var supBtn: Button
+    private lateinit var textViewRandomCall: TextView
+    private lateinit var databaseRef: DatabaseReference
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,9 +53,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RandomCallActivity::class.java)
             startActivity(intent)
         }
-
         callBtn.setOnClickListener {
-            Toast.makeText(this, "callBtn Clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, CallListActivity::class.java)
+            startActivity(intent)
         }
 
         supBtn.setOnClickListener {
@@ -65,7 +70,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-      //val requestsRef = FirebaseDatabase.getInstance().getReference("Requests")
         val requestsRef=Firebase.database.getReference("Requests")
         requestsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
