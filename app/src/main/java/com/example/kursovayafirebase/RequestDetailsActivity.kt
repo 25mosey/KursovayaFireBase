@@ -1,9 +1,10 @@
 package com.example.kursovayafirebase
 
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-class RequestDetailsActivity : AppCompatActivity() {
-
+//class RequestDetailsActivity : AppCompatActivity() {
+//
 //    private lateinit var binding: ActivityRequestDetailsBinding
 //
 //    override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,4 +24,4 @@ class RequestDetailsActivity : AppCompatActivity() {
 //            // Добавьте другие View для отображения дополнительных данных
 //        }
 //    }
-}
+//}
