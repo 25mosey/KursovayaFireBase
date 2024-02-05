@@ -8,6 +8,7 @@ android {
     namespace = "com.example.kursovayafirebase"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.example.kursovayafirebase"
         minSdk = 22
@@ -34,6 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    
 }
 
 dependencies {
