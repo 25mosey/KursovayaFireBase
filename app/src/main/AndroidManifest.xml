@@ -36,5 +36,9 @@
             android:name=".CallListActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".RequestDetailsActivity"
+            android:exported="true">
+        </activity>
     </application>
 </manifest>
