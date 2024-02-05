@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var supBtn: Button
     private lateinit var textViewRandomCall: TextView
     private lateinit var databaseRef: DatabaseReference
+    private lateinit var itemRequest: Request
 
 
 
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
 
         rndBtn.setOnClickListener {
+
             val intent = Intent(this, RandomCallActivity::class.java)
             startActivity(intent)
         }
@@ -62,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SupportActivity::class.java)
             startActivity(intent)
         }
+
 
         logoutButton.setOnClickListener {
             mAuth.signOut()

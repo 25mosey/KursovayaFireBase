@@ -3,6 +3,7 @@ package com.example.kursovayafirebase
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -28,9 +29,12 @@ class RequestAdapter(private val requests: List<Request>) :
         holder.textViewNameLiver.text = request.nameLiver
         holder.textViewIssue.text = request.issue
         holder.textViewAddres.text = request.address
+
+
     }
 
     override fun getItemCount(): Int {
         return requests.size
     }
+
 }
